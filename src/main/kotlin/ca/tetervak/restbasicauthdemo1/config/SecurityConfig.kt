@@ -11,27 +11,23 @@ import org.springframework.security.web.AuthenticationEntryPoint
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig: WebSecurityConfigurerAdapter() {
-
-    @Autowired
-    private val authEntryPoint: AuthenticationEntryPoint? = null
+class SecurityConfig(
+    private val authEntryPoint: AuthenticationEntryPoint
+) : WebSecurityConfigurerAdapter() {
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.csrf().disable().authorizeRequests()
-                .anyRequest()
-                .authenticated()
-//                .and()
-//                .formLogin()
-                .and()
-                .httpBasic()
-                .authenticationEntryPoint(authEntryPoint)
+            .anyRequest()
+            .authenticated()
+            .and()
+            .httpBasic()
+            .authenticationEntryPoint(authEntryPoint)
     }
-
 
     @Autowired
     @Throws(Exception::class)
-    fun configureGlobal(auth: AuthenticationManagerBuilder){
+    fun configureGlobal(auth: AuthenticationManagerBuilder) {
 
         auth
             .inMemoryAuthentication()
