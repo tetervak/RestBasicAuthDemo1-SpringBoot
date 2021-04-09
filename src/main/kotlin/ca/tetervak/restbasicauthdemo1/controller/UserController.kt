@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping(value = ["/"])
+//@RequestMapping(value = ["/"])
 class UserController(private val userDataService: UserDataService) {
 
     @GetMapping(path = ["/users"])

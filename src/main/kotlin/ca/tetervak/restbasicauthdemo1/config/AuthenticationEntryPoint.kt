@@ -18,8 +18,7 @@ class AuthenticationEntryPoint : BasicAuthenticationEntryPoint() {
                           authEx: AuthenticationException) {
         response.addHeader("WWW-Authenticate", "Basic realm=$realmName")
         response.status = HttpServletResponse.SC_UNAUTHORIZED
-        val message = response.writer
-        message.println("HTTP Status 401 - " + authEx.message)
+        response.writer.println("HTTP Status 401 - " + authEx.message)
     }
 
     @Throws(Exception::class)
