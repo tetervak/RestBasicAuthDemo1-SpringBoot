@@ -28,9 +28,7 @@ class SecurityConfig(
     @Autowired
     @Throws(Exception::class)
     fun configureGlobal(auth: AuthenticationManagerBuilder) {
-
-        auth
-            .inMemoryAuthentication()
+        auth.inMemoryAuthentication()
             .withUser("marge")
             .password(
                 PasswordEncoderFactories.createDelegatingPasswordEncoder()
