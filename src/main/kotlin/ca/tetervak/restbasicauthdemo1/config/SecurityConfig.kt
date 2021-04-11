@@ -16,8 +16,8 @@ class SecurityConfig(
 ) : WebSecurityConfigurerAdapter() {
 
     @Throws(Exception::class)
-    override fun configure(http: HttpSecurity) {
-        http.csrf().disable().authorizeRequests()
+    override fun configure(security: HttpSecurity) {
+        security.csrf().disable().authorizeRequests()
             .anyRequest()
             .authenticated()
             .and()
